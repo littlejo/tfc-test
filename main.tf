@@ -1,3 +1,9 @@
+data "github_release" "terraform" {
+  repository  = "terraform"
+  owner       = "hashicorp"
+  retrieve_by = "latest"
+}
+
 resource "tfe_oauth_client" "test" {
   name             = "my-github-oauth-client"
   organization     = "test-jli2"
@@ -14,24 +20,25 @@ resource "tfe_workspace" "test" {
 }
 
 module "my_workspace" {
-  source  = "flowingis/workspace/tfe"
-  version = "0.5.0"
+  source       = "flowingis/workspace/tfe"
+  version      = "0.5.0"
+  for_each     = var.workspace_data
+  organization = var.organization
 
-  name         = "my-workspace-name-module"
-  organization = "test-jli2"
-  description  = "Advanced workspace with remote run mode"
+  name        = each.value.name
+  description = each.value.description
 
-  terraform_version = "1.5.3"
+  terraform_version = replace(data.github_release.terraform.release_tag, "v", "")
 
-  queue_all_runs            = false
   working_directory         = "/"
-  vcs_repository_identifier = "littlejo/tfc-guide-example"
-  vcs_repository_branch     = "master"
+  vcs_repository_identifier = each.value.vcs.identifier
+  vcs_repository_branch     = each.value.vcs.branch
 
   oauth_token_id = tfe_oauth_client.test.oauth_token_id
+  queue_all_runs = false
 
   terraform_variables = {
-    region      = "us-east-1"
+    region = "us-east-1"
   }
 
   environment_sensitive_variables = {
@@ -45,9 +52,5 @@ module "my_workspace" {
     AWS_SECRET_ACCESS_KEY = "Secret Access Key to access AWS Account"
   }
 
-  tag_names = [
-    "project:core",
-    "environment:core",
-    "region:eu-west-1"
-  ]
+  tag_names = each.value.tag_names
 }
