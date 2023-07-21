@@ -1,9 +1,10 @@
-data "tfe_organization" "this" {
-  name = "test-jli2"
+resource "tfe_organization" "this" {
+  name  = "my-org-name-jli"
+  email = "admin@company.com"
 }
 
 resource "tfe_workspace" "test" {
   name         = "my-workspace-name"
-  organization = data.tfe_organization.this.name
+  organization = tfe_organization.this.name
   tag_names    = ["test", "app"]
 }
