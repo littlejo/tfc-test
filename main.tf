@@ -8,7 +8,7 @@ module "my_workspace" {
   source  = "flowingis/workspace/tfe"
   version = "0.5.0"
 
-  name         = "my-workspace-name"
+  name         = "my-workspace-name-module"
   organization = "test-jli2"
   description  = "Advanced workspace with remote run mode"
 
