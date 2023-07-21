@@ -27,7 +27,7 @@ variable "workspace_data" {
   type        = any
   default = {
     workspace_module = {
-      name        = "my-workspace-name-module"
+      name        = "my-workspace-name-module-2"
       description = "Advanced workspace with remote run mode"
       vcs = {
         identifier = "littlejo/tfc-guide-example"
