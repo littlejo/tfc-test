@@ -1,5 +1,4 @@
 data "tfe_oauth_client" "client" {
-  organization     = "test-jli2"
   service_provider = "github"
 }
 
