@@ -19,7 +19,7 @@ module "my_workspace" {
   vcs_repository_identifier = "littlejo/tfc-guide-example"
   vcs_repository_branch     = "master"
 
-  oauth_token_id = var.oauth_token_id #NOTE: sensitive value
+  #oauth_token_id = var.oauth_token_id #NOTE: sensitive value
 
   terraform_variables = {
     environment = "core"
