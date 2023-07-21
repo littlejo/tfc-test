@@ -9,7 +9,7 @@ module "my_workspace" {
   version = "0.5.0"
 
   name         = "my-workspace-name"
-  organization = "my-organization"
+  organization = "test-jli2"
   description  = "Advanced workspace with remote run mode"
 
   terraform_version = "1.3.7"
