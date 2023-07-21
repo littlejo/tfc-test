@@ -29,15 +29,15 @@ variable "workspace_data" {
     workspace_module = {
       name        = "my-workspace-name-module"
       description = "Advanced workspace with remote run mode"
+      vcs = {
+        identifier = "littlejo/tfc-guide-example"
+        branch     = "master"
+      }
+      tag_names = [
+        "project:core",
+        "environment:core",
+        "region:eu-west-1"
+      ]
     }
-    vcs = {
-      identifier = "littlejo/tfc-guide-example"
-      branch     = "master"
-    }
-    tag_names = [
-      "project:core",
-      "environment:core",
-      "region:eu-west-1"
-    ]
   }
 }
