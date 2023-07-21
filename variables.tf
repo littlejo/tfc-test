@@ -11,7 +11,7 @@ variable "secret_access_key" {
 }
 
 variable "oauth_token_id" {
-  description = "Github token"
+  description = "tfe token"
   type        = string
   sensitive   = true
 }
