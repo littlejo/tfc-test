@@ -21,7 +21,7 @@ module "my_workspace" {
   organization = "test-jli2"
   description  = "Advanced workspace with remote run mode"
 
-  terraform_version = "1.3.7"
+  terraform_version = "1.5.3"
 
   queue_all_runs            = false
   working_directory         = "/"
