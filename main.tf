@@ -31,8 +31,6 @@ module "my_workspace" {
   oauth_token_id = tfe_oauth_client.test.oauth_token_id
 
   terraform_variables = {
-    environment = "core"
-    project     = "core"
     region      = "us-east-1"
   }
 
@@ -42,8 +40,6 @@ module "my_workspace" {
   }
 
   variables_descriptions = {
-    environment           = "The environment of the project"
-    project               = "The name of the project"
     region                = "The AWS region where shared resources are deployed"
     AWS_ACCESS_KEY_ID     = "Access Key ID to access AWS Account"
     AWS_SECRET_ACCESS_KEY = "Secret Access Key to access AWS Account"
