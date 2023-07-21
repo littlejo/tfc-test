@@ -10,8 +10,8 @@ variable "secret_access_key" {
   sensitive   = true
 }
 
-variable "oauth_token_id" {
-  description = "tfe token"
+variable "oauth_token" {
+  description = "github token"
   type        = string
   sensitive   = true
 }
