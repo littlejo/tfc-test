@@ -1,5 +1,5 @@
 data "tfe_organization" "this" {
-  names = "test-jli2"
+  name = "test-jli2"
 }
 
 resource "tfe_workspace" "test" {
