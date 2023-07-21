@@ -1,3 +1,8 @@
+data "tfe_oauth_client" "client" {
+  organization     = "test-jli2"
+  service_provider = "github"
+}
+
 resource "tfe_workspace" "test" {
   name         = "my-workspace-name"
   organization = "test-jli2"
@@ -19,7 +24,7 @@ module "my_workspace" {
   vcs_repository_identifier = "littlejo/tfc-guide-example"
   vcs_repository_branch     = "master"
 
-  #oauth_token_id = var.oauth_token_id #NOTE: sensitive value
+  oauth_token_id = data.tfe_oauth_client.client.id
 
   terraform_variables = {
     environment = "core"
